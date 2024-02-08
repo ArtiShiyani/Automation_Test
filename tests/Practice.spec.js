@@ -86,8 +86,24 @@ test('Automation Testing Practice',async({page})=>{
      //await DropdownIcon .selectOption({lable:'India'})
      //await DropdownIcon .selectOption({value:'india'})
      //await DropdownIcon .selectOption({index:'1'})
-     await DropdownIcon .selectOption('India')
-     //page.selectOption('//select[@id="country"]','India') 
+     //await DropdownIcon .selectOption('India')
+     // await page.selectOption('//select[@id="country"]','India') 
+     
+
+     //Assertation in Dropdown
+     //(1) can check howmany option are in the dropdown // need to comment all above //not working
+     //const options = await page.locator('#country option')
+     //await expect(options).toHaveCount(10)
+     
+     //(2) check the number of option in dropdown
+     const options= await page.$$('#country option') //$$ reaturns in the array form
+     console.log("Number of options",options.length)//checking the number of option
+     await expect(options.length).toBe(10)
+
+     //(3) to check the presence of some value in dropdown
+     const content =await page.locator('//select[@id="country"]').textContent()
+     await expect(content.includes('India')).toBeTruthy()
+
 
 })
 
