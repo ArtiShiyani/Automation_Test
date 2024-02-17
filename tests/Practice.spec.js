@@ -91,20 +91,72 @@ test('Automation Testing Practice',async({page})=>{
      
 
      //Assertation in Dropdown
-     //(1) can check howmany option are in the dropdown // need to comment all above //not working
+     //(1)  check the number of option in dropdown [approach 1]// need to comment all above //not working
      //const options = await page.locator('#country option')
      //await expect(options).toHaveCount(10)
      
-     //(2) check the number of option in dropdown
+     //(2) check the number of option in dropdown[approach 2]
      const options= await page.$$('#country option') //$$ reaturns in the array form
      console.log("Number of options",options.length)//checking the number of option
      await expect(options.length).toBe(10)
 
-     //(3) to check the presence of some value in dropdown
+     //(3) to check the presence of some value(option) in dropdown [approach 1]
      const content =await page.locator('//select[@id="country"]').textContent()
      await expect(content.includes('India')).toBeTruthy()
 
+     //(4) To check the Presence of some option or value in Dropdown by looping approach
+     //store all options in a variable[approach 2]
 
+     /*const optionss= await page.$$('#country option')
+     let status =false
+
+     for (const option of optionss )
+     {
+        console.log(await option.textContent())// To Print all the option in console window
+         let value =await option.textContent()// store option in 'value' variavle 
+        if (value.includes('France'))
+        {
+            status= true
+            break
+        }
+        expect(status).toBeTruthy
+
+     }*/
+     //(5) select the  option from dropdown by using loop
+     const optionss= await page.$$('#country option')
+     
+
+     for (const option of optionss )
+     {
+        console.log(await option.textContent())// To Print all the option in console window
+         let value =await option.textContent()// store option in 'value' variavle 
+        if (value.includes('France'))
+        {
+            await page.selectOption('#country',value)
+            break
+        }
+
+     }
+
+})
+//How to handle multiple Dropdown
+test('select multiple dropdown',async({page})=>{
+
+
+    //To lauch the Webpage or Web application
+    await page.goto('https://testautomationpractice.blogspot.com/')
+    const HeadingText = page.locator('//h1[contains(text(),"Automation Testing Practice")]')
+    await expect(HeadingText).toBeVisible()
+
+    await page.selectOption('#colors',['Red','Blue','Green'])
+
+    //Assertation on multi  select dropdown
+      const multioptions=  await page.locator('#color option')
+      await expect(multioptions).toHaveCount(5)
+
+
+
+    await page.waitForTimeout(4000)
 })
 
 
