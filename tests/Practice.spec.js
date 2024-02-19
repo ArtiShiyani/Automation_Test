@@ -151,8 +151,15 @@ test('select multiple dropdown',async({page})=>{
     await page.selectOption('#colors',['Red','Blue','Green'])
 
     //Assertation on multi  select dropdown
-      const multioptions=  await page.locator('#color option')
-      await expect(multioptions).toHaveCount(5)
+    //(1) check the number of option in dropown
+    //   const multioptions=  await page.locator('#color option')
+    //   await expect(multioptions).toHaveCount(5)
+
+      //(2) number of option in dropdown  using js array.
+      const multioptionss=  await page.$$('#color option')
+      console.log(multioptionss)
+      await expect(multioptionss.length).toBe(5)
+
 
 
 
