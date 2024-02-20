@@ -1,13 +1,17 @@
 import {test,expect} from '@playwright/test'
 //const {text,expect}=require('@playwright/test')
 
-test('Automation Testing Practice',async({page})=>{
+test.beforeEach('Login',async({page})=>{
 
     //To lauch the Webpage or Web application
     await page.goto('https://testautomationpractice.blogspot.com/')
     const HeadingText = page.locator('//h1[contains(text(),"Automation Testing Practice")]')
     await expect(HeadingText).toBeVisible()
-    
+
+})
+
+test('Automation Testing Practice',async({page})=>{
+
     //Login(Inputbox,Textbox)
 
     const Name = page.locator('//input[@id="name"]')
@@ -93,7 +97,7 @@ test('Automation Testing Practice',async({page})=>{
      //Assertation in Dropdown
      //(1)  check the number of option in dropdown [approach 1]// need to comment all above //not working
      //const options = await page.locator('#country option')
-     //await expect(options).toHaveCount(10)
+     //await expect(options).toHaveCount(10) 
      
      //(2) check the number of option in dropdown[approach 2]
      const options= await page.$$('#country option') //$$ reaturns in the array form
@@ -144,26 +148,31 @@ test('select multiple dropdown',async({page})=>{
 
 
     //To lauch the Webpage or Web application
-    await page.goto('https://testautomationpractice.blogspot.com/')
-    const HeadingText = page.locator('//h1[contains(text(),"Automation Testing Practice")]')
-    await expect(HeadingText).toBeVisible()
+    // await page.goto('https://testautomationpractice.blogspot.com/')
+    // const HeadingText = page.locator('//h1[contains(text(),"Automation Testing Practice")]')
+    // await expect(HeadingText).toBeVisible()
 
     await page.selectOption('#colors',['Red','Blue','Green'])
 
     //Assertation on multi  select dropdown
     //(1) check the number of option in dropown
-    //   const multioptions=  await page.locator('#color option')
-    //   await expect(multioptions).toHaveCount(5)
+     const multioptions=  await page.locator('#colors option')
+      await expect(multioptions).toHaveCount(5)
 
       //(2) number of option in dropdown  using js array.
-      const multioptionss=  await page.$$('#color option')
+      const multioptionss =  await page.$$('#colors option')
       console.log(multioptionss)
-      await expect(multioptionss.length).toBe(5)
+      await expect(multioptionss.length).toBe(5) 
+      
 
-
-
+      //(3) to check the presence of some value in dropdown
+       const dropdownvalue  =  await page.locator('#colors').textContent()
+       await expect(dropdownvalue.includes('Red')).toBeTruthy()
 
     await page.waitForTimeout(4000)
 })
+ test('Bootstrap Dropdown',async({page})=>{
+
+ })
 
 
