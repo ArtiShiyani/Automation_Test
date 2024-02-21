@@ -171,8 +171,6 @@ test('select multiple dropdown',async({page})=>{
 
     await page.waitForTimeout(4000)
 })
- test('Bootstrap Dropdown',async({page})=>{
-
- })
+ 
 
 
