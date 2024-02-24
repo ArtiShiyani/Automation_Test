@@ -9,13 +9,14 @@ test('Bootstrap  multi select Dropdown',async({page})=>{
      //const Dropdownbutton = page.locator(`//button[@class="multiselect dropdown-toggle btn btn-default"]`)
      //await Dropdownbutton.click()
 
-
      // Assertion(1) 
        const dropdownoptions =  await page.locator('ul>li label input')
-        await expect(dropdownoptions).toHaveCount(11)
+       await page.waitForTimeout(5000)
+       await expect(dropdownoptions).toHaveCount(11)
 
       //  OR Assertion (2)
         const dropdownoptionss =  await page.$$('ul>li label input') //($$ need to use await )
+        await page.waitForTimeout(5000)
         await expect(dropdownoptionss.length).toBe(11)
 
         //how to select multiple option from dropdown
@@ -26,7 +27,7 @@ test('Bootstrap  multi select Dropdown',async({page})=>{
          {
                //await option.innerText()
               const value = await option.textContent()
-              //console.log("The value is ",value)
+              console.log("The value is ",value)
 
               if (value.includes('Angular')|| value.includes('Java'))
               {
@@ -39,21 +40,13 @@ test('Bootstrap  multi select Dropdown',async({page})=>{
          {
                //await option.innerText()
               const value = await option.textContent()
-              //console.log("The value is ",value)
+              console.log("The value is ",value)
 
               if (value.includes('HTML')|| value.includes('CSS'))
               {
                await option.click()
               }
                
-         }
-        
-      
-      
-
-
-
-
-     
+         }   
 
 })
