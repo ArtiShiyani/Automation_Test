@@ -14,7 +14,7 @@ test.skip('Alert with ok',async({page})=>{
         
          expect (dialog.type()).toContain('alert')
          expect (dialog.message()).toContain('I am an alert box!')
-         await dialog.accept()  // >>>to close the dialog.
+         await dialog.accept()  // >>>to close the dialog with 'ok'
 
     })
 
