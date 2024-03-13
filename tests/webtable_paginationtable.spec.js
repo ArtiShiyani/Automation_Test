@@ -2,7 +2,7 @@ import{test, expect} from '@playwright/test'
 
 test('Handling table',async({page})=>{
 
-    page.goto('https://testautomationpractice.blogspot.com/')
+    await page.goto('https://testautomationpractice.blogspot.com/')
 
     //await page.pause()
 
