@@ -4,19 +4,19 @@
 
     await page.goto('https://testautomationpractice.blogspot.com/')
 
-     await page.fill('//input[@id="datepicker"]','03/13/2024') // 1) first  way to insert date
+     //await page.fill('//input[@id="datepicker"]','03/13/2024') // 1) first  way to insert date
 
-     await page.waitForTimeout(3000)
+     await page.waitForTimeout(10000)
 
      //Date Picker
 
-     const year = "2024"
+     const year = "1993"
      const month ="September"
      const day ="07"
 
      await page.click('//input[@id="datepicker"]') // opens the calender
 
-     await page.click('#datepicker') // opens the calender
+     //await page.click('#datepicker') // opens the calender
 
 
      while(true)
@@ -28,11 +28,13 @@
          {
             break;
          }
-         await page.locator('[title="Next"]').click()
-     }
-     await page.waitForTimeout(3000)
+         //await page.locator('[title="Next"]').click() // to click the next year
+         await page.locator('[title="Prev"]').click() // to click the previous year
 
-     //To select the date
+     }
+     await page.waitForTimeout(10000)
+
+     // 1st way to seleect the date
 
      const date = await page.locator('//a[@class="ui-state-default"]')
 
@@ -44,4 +46,9 @@
             break;
         }
      }
+
+     // 2) way to select the date >>Date selection without loop
+     //await page.click('//a[@class="ui-state-default"][text()="15"]')>> xpath
+     //await page.click(`//a[@class="ui-state-default"][text()="${day}"]`) //parameterize from the  xpath n need to use (``) 
+
  })
