@@ -1,5 +1,7 @@
 import{test, expect} from '@playwright/test'
 
+//Ref >>https://playwright.dev/docs/api/class-keyboard
+
 test('Keyboard Actions in Playwright',async({page})=>{
 
 await page.goto('https://gotranscript.com/text-compare')
