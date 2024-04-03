@@ -4,7 +4,7 @@ test('Keyboard Actions in Playwright',async({page})=>{
 
 await page.goto('https://gotranscript.com/text-compare')
 
-await page.locator('name="text1"').fill('Welcome to automation')
+await page.locator('//textarea[@name="text1"]').fill('Welcome to automation')
 
 
 
