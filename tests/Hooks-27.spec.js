@@ -9,6 +9,7 @@ const { beforeEach } = require('node:test')
 // beforeAll >> This hook is executed once  before any of the test starts running.
 // afterall >> This hook is executed once after all the tests have been run.
 //Hookdont accept the {page} fixture
+//page is  globle varivale so no need to take in each test as Fixture.
 
 let page;
 test.beforeEach(async ({browser})=>{
@@ -29,12 +30,12 @@ test.afterEach(async()=>{
 
 })
 
-test('Homepage test ',async({page})=>{
+test('Homepage test ',async()=>{
 
      const products =await page.$$('.hrefch')
      expect (products).toHaveLength(9)
 })
-test('Add to cart. ',async({page})=>{
+test('Add to cart. ',async()=>{
 
     await page.locator('//a[text()="Samsung galaxy s6"]').click()
     await page.locator('//a[text()="Add to cart"]').click()
