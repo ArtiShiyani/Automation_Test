@@ -1,9 +1,13 @@
 const{test,expect} = require('@playwright/test')
 
+//  perticuler test >>  await page.screenshot({path:})
+//  but if for all test , need to capture screenshot. so we need to add  screenshot:on  in config file
+
 test('Page Screenshot',async({page})=>{
 
     await page.goto('https://demo.opencart.com/')
-    await page.screenshot({path:'tests\Screenshot'+Date.now()+'Hompage.png'})
+    const buffer=await page.screenshot({path:'tests\Screenshot'+Date.now()+'Hompage.png'})
+    console.log(buffer.toString('base64'))
 
 })
 

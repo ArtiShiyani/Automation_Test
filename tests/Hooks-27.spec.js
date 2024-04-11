@@ -17,9 +17,10 @@ test.beforeEach(async ({browser})=>{
     page= await browser.newPage()
     //Login
     await page.goto('https://demoblaze.com/')
+    await page.locator('//a[@id="login2"]').click()
     await page.locator('//input[@id="loginusername"]').fill('employee')
     await page.locator('//input[@id="loginpassword"]').fill('123')
-    await page.locator('(//button[@class="btn btn-primary"])[2]').click()
+    await page.locator('(//button[@class="btn btn-primary"])[3]').click()
 
 })
 test.afterEach(async()=>{
