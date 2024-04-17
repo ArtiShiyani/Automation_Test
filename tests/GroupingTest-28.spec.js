@@ -23,7 +23,7 @@ test.afterEach(async()=>{
 
 })
 
-test.describe.only('Group 1',()=>{
+test.describe.only('Group 1@slow',()=>{
 
     test('Test 1',async ()=>{
 

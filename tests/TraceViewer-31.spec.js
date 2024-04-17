@@ -1,6 +1,6 @@
 import{test, expect} from'@playwright/test'
 
-test('',async({page})=>{
+test('Trace in playwright',async({page})=>{
 
     await page.goto('https://demoblaze.com/')
     await page.locator('//a[@id="login2"]').click()
