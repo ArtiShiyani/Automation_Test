@@ -5,23 +5,23 @@
 
 import{test, expect} from'@playwright/test'
 
-test('Test1@sanity',async()=>{
+test('Test1@sanity',async({page})=>{
 
-    console.log('Test1')
+    console.log('Test1....')
 })
-test('Test2@sanity',async()=>{
+test('Test2@sanity',async({page})=>{
 
-    console.log('Test2')
+    console.log('Test2....')
 })
-test('Test3@reg',async()=>{
+test('Test3@reg',async({page})=>{
 
-    console.log('Test3')
+    console.log('Test3....')
 })
-test('Test4@reg',async()=>{
+test('Test4@reg',async({page})=>{
 
-    console.log('Test4')
+    console.log('Test4....')
 })
-test('Test3@reg@sanity',async()=>{
+test('Test5@reg@sanity',async({page})=>{
 
-    console.log('Test5')
+    console.log('Test5....')
 })
