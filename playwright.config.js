@@ -35,6 +35,8 @@ module.exports = defineConfig({
     
   },
 
+  timeout:10000,
+
   /* Configure projects for major browsers */
   projects: [
     {
