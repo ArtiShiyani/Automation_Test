@@ -1,0 +1,37 @@
+<testsuites id="" name="" tests="3" failures="0" skipped="0" errors="0" time="7.9121559999999995">
+<testsuite name="Reporters-36.spec.js" timestamp="2024-04-25T18:34:36.157Z" hostname="chromium" tests="3" failures="0" skipped="0" time="6.42" errors="0">
+<testcase name="Test 1" classname="Reporters-36.spec.js" time="2.431">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\Reporters-36-Test-1-chromium\test-finished-1.png]]
+
+[[ATTACHMENT|test-results\Reporters-36-Test-1-chromium\video.webm]]
+
+[[ATTACHMENT|test-results\Reporters-36-Test-1-chromium\trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Test 2" classname="Reporters-36.spec.js" time="1.66">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\Reporters-36-Test-2-chromium\test-finished-1.png]]
+
+[[ATTACHMENT|test-results\Reporters-36-Test-2-chromium\video.webm]]
+
+[[ATTACHMENT|test-results\Reporters-36-Test-2-chromium\trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Test 3" classname="Reporters-36.spec.js" time="2.329">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\Reporters-36-Test-3-chromium\test-finished-1.png]]
+
+[[ATTACHMENT|test-results\Reporters-36-Test-3-chromium\video.webm]]
+
+[[ATTACHMENT|test-results\Reporters-36-Test-3-chromium\trace.zip]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

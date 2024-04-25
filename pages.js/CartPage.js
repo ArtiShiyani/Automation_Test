@@ -3,11 +3,12 @@ class CartPage{
 
     constructor(page){
 
-        this.numberOfProduct =`//tbody[@id="tbodyid"]/tr/td[2]`
+        this.page= page;
+        this.numberOfProduct =`//tbody[@id="tbodyid"]/tr/td[2]`;
 
     }
 
-    async checkProductInCart(productname)
+    async checkProductInCart(page,productname)
     {
         const productInCart = await page.$$(this.numberOfProduct);
 

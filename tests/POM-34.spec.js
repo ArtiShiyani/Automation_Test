@@ -25,13 +25,13 @@ test('POM ',async({page})=>{
 
      const home =new HomePage(page)
      await home.addProductToCart('Samsung galaxy s6');
-     await page.waitForTimeout(11000);
+     //await page.waitForTimeout(35000);
      await home.GoToCart();
 
      //cart
 
     const cart = new CartPage(page)
-    await page.waitForTimeout(11000)
+   // await page.waitForTimeout(35000)
     const status =await cart.checkProductInCart('Samsung galaxy s6');
     expect(status).toBe(true);
 
