@@ -1,5 +1,6 @@
 const {test,expect,chromium}=require('@playwright/test')
 //browser contains the context and context conatins the multiple pages
+//This is without using 'page' fixture.
 
 test.skip('Handle Pages/Windows',async()=>{
 
