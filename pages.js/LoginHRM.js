@@ -24,6 +24,18 @@ class LoginHRM
         await this.page.locator(this.username).fill('Admin');
         await this.page.locator(this.password).fill('admin123');
         await this.page.locator(this.loginbutton).click();
+
+
+
+        await this.page.on('dialog',async dialog=>
+        {
+
+            if(dialog.message().includes('Change your password'))
+            {
+                await dialog.accept();
+            }
+
+        })
     }
 
     // async login(UserName,PassWord) //parameterized
