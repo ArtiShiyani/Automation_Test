@@ -9,6 +9,19 @@ exports.MyInfoHRM=class MyInfoHRM
     this.searchbox=`//input[@placeholder="Search"]`;
     this.searchedtab =`//li[@class="oxd-main-menu-item-wrapper"]`;
     this.subtabofmyinfo=`//div[@class="orangehrm-tabs"]`;
+    this.contactdetails =`//a[text()="Contact Details"]`;
+    this.street1 =`(//input[@class="oxd-input oxd-input--active"])[2]`;
+    this.street2=`(//input[@class="oxd-input oxd-input--active"])[3]`;
+    this.city =`(//input[@class="oxd-input oxd-input--active"])[4]`;
+    this.state =`(//input[@class="oxd-input oxd-input--active"])[5]`;
+    this.zip =`(//input[@class="oxd-input oxd-input--active"])[6]`;
+    this.home =`(//input[@class="oxd-input oxd-input--active"])[7]`;
+    this.mobile =`(//input[@class="oxd-input oxd-input--active"])[8]`;
+    this.work =`(//input[@class="oxd-input oxd-input--active"])[9]`;
+    this.workemail =`(//input[@class="oxd-input oxd-input--active"])[10]`;
+    this.otheremail =`(//input[@class="oxd-input oxd-input--active"])[11]`;
+    this.save =`//button[@class="oxd-button oxd-button--medium oxd-button--secondary orangehrm-left-space"]`
+
    
     
     
@@ -26,11 +39,10 @@ exports.MyInfoHRM=class MyInfoHRM
     await expect(searchedTab).toContainText(tabname);
     await searchedTab.first().click();
     
-
   }
 //To click on subtab of Myinfo page
 
-  async clickOnSubTabOfMyInfo(subtabname){
+/* async clickOnSubTabOfMyInfo(subtabname){
 
     const SubTab =await this.page.$$(this.subtabofmyinfo);
 
@@ -47,9 +59,29 @@ exports.MyInfoHRM=class MyInfoHRM
         break;
       }
          
-    }
+    } */
 
+  async clickoncontactdetails(){
+
+      await this.page.locator(this.contactdetails).click();
   }
 
-  
+async FillDatainContactDetails(){
+
+  await this.page.locator(this.street1).fill('Test 1');
+  await this.page.locator(this.street2).fill('Test 2');
+  await this.page.locator(this.city).fill('New York');
+  await this.page.locator(this.state).fill('U.S');
+  await this.page.locator(this.zip).fill('12345');
+  await this.page.locator(this.home).fill('102');
+  await this.page.locator(this.mobile).fill('112-898-7612');
+  await this.page.locator(this.work).fill('112-898-7612');
+  await this.page.locator(this.workemail).fill('arti@yopmail.com');
+  await this.page.locator(this.otheremail).fill('admin@example.com');
+
+  await this.page.locator(this.save).click();
+
+
+}
+
 }

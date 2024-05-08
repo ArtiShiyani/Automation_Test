@@ -4,7 +4,6 @@ import { MyInfoHRM } from '../pages.js/MyInfoHRM'
 
 test('HRM Test',async({page})=>{
 
-
 //login
 
 const loginhrm =new LoginHRM(page);
@@ -20,12 +19,18 @@ await loginhrm.login();
 const hp=new MyInfoHRM(page)
 await hp.clickOnSearchedTab('My Info');
 
-await page.waitForTimeout(3000);
-await page.pause();
+//await page.waitForTimeout(3000);
 
-await hp.clickOnSubTabOfMyInfo('Emergency Contacts');
+
+// await hp.clickOnSubTabOfMyInfo('Contact Details');
+
+await hp.clickoncontactdetails();
+
+await hp.FillDatainContactDetails();
 
 await page.waitForTimeout(10000);
+
+
 
 
 
