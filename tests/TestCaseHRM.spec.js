@@ -22,7 +22,7 @@ await hp.clickOnSearchedTab('My Info');
 //await page.waitForTimeout(3000);
 
 
-// await hp.clickOnSubTabOfMyInfo('Contact Details');
+//await hp.clickOnSubTabOfMyInfo('Contact Details');
 
 await hp.clickoncontactdetails();
 
