@@ -19,7 +19,7 @@ await loginhrm.login();
 const hp=new MyInfoHRM(page)
 await hp.clickOnSearchedTab('My Info');
 
-//await page.waitForTimeout(3000);
+await page.waitForTimeout(3000);
 
 
 //await hp.clickOnSubTabOfMyInfo('Contact Details');
@@ -28,7 +28,21 @@ await hp.clickoncontactdetails();
 
 await hp.FillDatainContactDetails();
 
-await page.waitForTimeout(10000);
+await page.waitForTimeout(3000);
+
+await hp.clickonpersonalDetails();
+
+await hp.filldetainpersonaldetails();
+
+await page.waitForTimeout(3000);
+
+
+//Logout
+
+await loginhrm.logout();
+
+
+
 
 
 

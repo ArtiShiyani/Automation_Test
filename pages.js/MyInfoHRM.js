@@ -23,10 +23,25 @@ exports.MyInfoHRM=class MyInfoHRM
     this.countryDropdownicon =`//div[@class="oxd-select-text--after"]`;
     this.countrylist =`//div[@role="option"]//span`;
     this.save =`//button[@class="oxd-button oxd-button--medium oxd-button--secondary orangehrm-left-space"]`
-
-   
-    
-    
+    this.personaldetails =`//a[text()="Personal Details"]`;
+    this.firstname=`//input[@placeholder="First Name"]`;
+    this.middlename=`//input[@placeholder="Middle Name"]`;
+    this.lastname =`//input[@placeholder="Last Name"]`;
+    this.employeeid =`(//input[@class="oxd-input oxd-input--active"])[2]`;
+    this.otherid =`(//input[@class="oxd-input oxd-input--active"])[3]`;
+    this.driverLianceNumber =`(//input[@class="oxd-input oxd-input--active"])[4]`;
+    this.lianceExpiryDate=`(//input[@class="oxd-input oxd-input--active"])[5]`;
+    this.dob =`(//input[@class="oxd-input oxd-input--active"])[6]`;
+    this.male=`//input[@value="1"]`;
+    this.female=`//input[@value="2"]`;
+    this.nationalitydropdownicon =`(//i[@class="oxd-icon bi-caret-down-fill oxd-select-text--arrow"])[1]`;
+    this.nationalityList=`//div[@role="option"]//span`;
+    this.maritalstatusdropdownicon =`(//i[@class="oxd-icon bi-caret-down-fill oxd-select-text--arrow"])[2]`;
+    this.maritalstatusList =`//div[@role="option"]//span`;
+    this.personaldetailssavebutton =`(//button[@class="oxd-button oxd-button--medium oxd-button--secondary orangehrm-left-space"])[1]`;
+    this.bloodgroupdropdownicon =`(//i[@class="oxd-icon bi-caret-down-fill oxd-select-text--arrow"])[3]`;
+    this.bloodgrplist=`//div[@role="option"]//span`;
+    this.customfieldssavebutton=`(//button[@class="oxd-button oxd-button--medium oxd-button--secondary orangehrm-left-space"])[2]`;
 
  }
 
@@ -83,7 +98,7 @@ async FillDatainContactDetails()
   //await this.page.locator(this.workemail).fill('arti@yopmail.com');
   //await this.page.locator(this.otheremail).fill('admin@example.com');
 
-  //Dropdown
+  //Dropdown of country
 
   await this.page.locator(this.countryDropdownicon).click()
 
@@ -96,10 +111,88 @@ async FillDatainContactDetails()
     if(countrytext.includes('Albania')){
 
       await opntion.click()
-
     }
   }
 await this.page.locator(this.save).click();
+
+}
+
+async clickonpersonalDetails(){
+
+   await this.page.locator(this.personaldetails).click();
+}
+
+async filldetainpersonaldetails(){
+
+  await this.page.locator(this.firstname).fill('Shiyani');
+  await this.page.locator(this.middlename).fill('Arti');
+  await this.page.locator(this.lastname).fill('V');
+  await this.page.locator(this.employeeid).fill('muser');
+  await this.page.locator(this.otherid).fill('4957589');
+  await this.page.locator(this.driverLianceNumber).fill('56788');
+  await this.page.locator(this.lianceExpiryDate).fill('2025-12-12');
+  await this.page.locator(this.dob).fill('1993-09-07');
+  await this.page.locator(this.female).click();
+
+  //Dropdown of nationality 
+  
+  await this.page.locator(this.nationalitydropdownicon).click()
+
+  const nationalityoptions = await this.page.$$(this.nationalityList);
+
+  for(const option of nationalityoptions){
+
+    const nationalitylist =await option.textContent();
+
+    if(nationalitylist.includes('Albanian')){
+
+      await option.click();
+
+      break;
+    }
+
+  }
+
+ //Dropdown of marital status 
+ 
+ await this.page.locator(this.maritalstatusdropdownicon).click()
+
+  const maritaloptions = await this.page.$$(this.maritalstatusList);
+
+  for(const option of maritaloptions){
+
+    const nationalitylist =await option.textContent();
+
+    if(nationalitylist.includes('Single')){
+
+      await option.click();
+
+      break;
+    }
+
+  }
+
+  await this.page.locator(this.personaldetailssavebutton).click()
+
+
+  //Dropdown of blood group
+
+  await this.page.locator(this.bloodgroupdropdownicon).click()
+
+  const bloodGroupOptions =await this.page.$$(this.bloodgrplist);
+
+  for(const option of bloodGroupOptions){
+
+     const bloodType =await option.textContent();
+
+     if(bloodType.includes('O-')){
+      await option.click();
+      break;
+     }
+
+  }
+  await this.page.locator(this.customfieldssavebutton).click();
+
 
 
 }
