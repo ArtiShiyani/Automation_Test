@@ -42,6 +42,14 @@ exports.MyInfoHRM=class MyInfoHRM
     this.bloodgroupdropdownicon =`(//i[@class="oxd-icon bi-caret-down-fill oxd-select-text--arrow"])[3]`;
     this.bloodgrplist=`//div[@role="option"]//span`;
     this.customfieldssavebutton=`(//button[@class="oxd-button oxd-button--medium oxd-button--secondary orangehrm-left-space"])[2]`;
+    this.addbutton =`//button[@class="oxd-button oxd-button--medium oxd-button--text"]`;
+    this.browse =`//div[@class="oxd-file-div oxd-file-div--active"]`;
+    this.comment =`//textarea[@placeholder="Type comment here"]`;
+    this.attachmentsavebutton=`(//button[@class="oxd-button oxd-button--medium oxd-button--secondary orangehrm-left-space"])[3]`;
+    this.editicon =`(//button[@class="oxd-icon-button oxd-table-cell-action-space"])[1]`;
+    this.deleteicon=`(//button[@class="oxd-icon-button oxd-table-cell-action-space"])[2]`;
+    this.downloadicon =`(//button[@class="oxd-icon-button oxd-table-cell-action-space"])[3]`;
+    this.yesdeleteicon =`//button[@class="oxd-button oxd-button--medium oxd-button--label-danger orangehrm-button-margin"]`;
 
  }
 
@@ -129,10 +137,10 @@ async filldetainpersonaldetails(){
   await this.page.locator(this.lastname).fill('V');
   await this.page.locator(this.employeeid).fill('muser');
   await this.page.locator(this.otherid).fill('4957589');
-  await this.page.locator(this.driverLianceNumber).fill('56788');
-  await this.page.locator(this.lianceExpiryDate).fill('2025-12-12');
+  //await this.page.locator(this.driverLianceNumber).fill('56788');
+  //await this.page.locator(this.lianceExpiryDate).fill('2025-12-12');
   await this.page.locator(this.dob).fill('1993-09-07');
-  await this.page.locator(this.female).click();
+  //await this.page.locator(this.female).click();
 
   //Dropdown of nationality 
   
@@ -192,8 +200,37 @@ async filldetainpersonaldetails(){
 
   }
   await this.page.locator(this.customfieldssavebutton).click();
+}
+
+async addattachment(){
+
+  this.page.locator(this.addbutton).click();
+  this.page.locator(this.browse).setInputFiles('tests\UploadFiles\Template Test Plan.xlsx');
+  this.page.locator(this.comment).fill('File uploaded');
+  this.page.locator(this.attachmentsavebutton).click();
+
+}
+
+async editattachmnet(){
+
+  await this.page.locator(this.editicon).click();
+  this.page.locator(this.browse).setInputFiles('tests\UploadFiles\Template Test Plan.xlsx');
+  this.page.locator(this.comment).fill('File uploaded');
+  this.page.locator(this.attachmentsavebutton).click();
 
 
+}
+
+async downloadfile(){
+
+  await this.page.locator(this.downloadicon).click();
+  
+}
+
+async deleteattachment(){
+
+  await this.page.locator(this.deleteicon).click();
+  await this.page.lastname(this.yesdeleteicon).click();
 
 }
 

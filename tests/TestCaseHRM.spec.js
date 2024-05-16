@@ -1,8 +1,9 @@
 import{test,expect} from'@playwright/test'
 import { LoginHRM } from '../pages.js/LoginHRM'
 import { MyInfoHRM } from '../pages.js/MyInfoHRM'
+import { addAbortListener } from 'events';
 
-test('HRM Test',async({page})=>{
+test('HRM Test1',async({page})=>{
 
 //login
 
@@ -28,40 +29,22 @@ await hp.clickoncontactdetails();
 
 await hp.FillDatainContactDetails();
 
-await page.waitForTimeout(3000);
-
 await hp.clickonpersonalDetails();
 
 await hp.filldetainpersonaldetails();
 
-await page.waitForTimeout(3000);
+await hp.addattachment();
+
+await hp.editattachmnet();
+
+await hp.downloadfile();
+
+await hp.deleteattachment();
+
 
 
 //Logout
 
 await loginhrm.logout();
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-    
 
 })
