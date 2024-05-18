@@ -1,7 +1,7 @@
 import{test,expect} from'@playwright/test'
 import { LoginHRM } from '../pages.js/LoginHRM'
 import { MyInfoHRM } from '../pages.js/MyInfoHRM'
-import{ pimpagehrm} from '../pages.js/MyInfoHRM'
+import{ pimpagehrm} from '../pages.js/pimpagehrm'
 import { addAbortListener } from 'events';
 
 let page;
@@ -59,10 +59,10 @@ await hp.filldetainpersonaldetails();
 test('HRM Test 2',async()=>{
 
 // PIM
-const pim =new pimpagehrm(page)
-
-await pim.eddEmployee();
-
+ const pim =new pimpagehrm(page)
+ 
+ await pim.clickOnSearchedTab('PIM');
+ await pim.addEmployee();
 
 })
 
