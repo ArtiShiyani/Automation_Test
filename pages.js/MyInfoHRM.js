@@ -43,7 +43,7 @@ exports.MyInfoHRM=class MyInfoHRM
     this.bloodgrplist=`//div[@role="option"]//span`;
     this.customfieldssavebutton=`(//button[@class="oxd-button oxd-button--medium oxd-button--secondary orangehrm-left-space"])[2]`;
     this.addbutton =`//button[@class="oxd-button oxd-button--medium oxd-button--text"]`;
-    this.browse =`//div[@class="oxd-file-div oxd-file-div--active"]`;
+    this.browse =`//div[@class="oxd-file-button"]`;
     this.comment =`//textarea[@placeholder="Type comment here"]`;
     this.attachmentsavebutton=`(//button[@class="oxd-button oxd-button--medium oxd-button--secondary orangehrm-left-space"])[3]`;
     this.editicon =`(//button[@class="oxd-icon-button oxd-table-cell-action-space"])[1]`;
@@ -203,17 +203,34 @@ async filldetainpersonaldetails(){
 }
 
 async addattachment(){
-
+  
+  //Clik on "+add" button
   this.page.locator(this.addbutton).click();
-  this.page.locator(this.browse).setInputFiles('tests\UploadFiles\Template Test Plan.xlsx');
-  this.page.locator(this.comment).fill('File uploaded');
-  this.page.locator(this.attachmentsavebutton).click();
+
+  // Locate the input file element and ensure it's the correct one
+  const fileInput = await this.page.locator(this.browse);
+
+  // Verify that the located element is indeed an input element
+  const isInputElement = await fileInput.evaluate(node => node instanceof HTMLInputElement);
+  if (!isInputElement) {
+      throw new Error('The locator for the file input does not point to an HTMLInputElement');
+  }
+
+  // Set input files
+  await fileInput.setInputFiles('tests/UploadFiles/Template Test Plan.xlsx');
+  
+  //this.page.locator(this.browse).setInputFiles('tests\UploadFiles\Template Test Plan.xlsx');
+  this.page.locator(this.comment).fill('File uploaded'); //Fill the comment field
+  this.page.locator(this.attachmentsavebutton).click();// Click the save button
+
+  
 
 }
 
 async editattachmnet(){
 
-  await this.page.locator(this.editicon).click();
+  this.page.locator(this.editicon).click();
+  this.page.waitforSelector(this.browse);
   this.page.locator(this.browse).setInputFiles('tests\UploadFiles\Template Test Plan.xlsx');
   this.page.locator(this.comment).fill('File uploaded');
   this.page.locator(this.attachmentsavebutton).click();
