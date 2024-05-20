@@ -13,7 +13,8 @@ exports.pimpagehrm=class pimpagehrm{
         this.addemp=`(//a[@class="oxd-topbar-body-nav-tab-item"])[2]`;
         this.firstname =`//input[@name="firstName"]`;
         this.middlename=`//input[@name="middleName"]`;
-        this.lastname=`//input[@name="lastName"]`
+        this.lastname=`//input[@name="lastName"]`;
+        this.save=`//button[@class="oxd-button oxd-button--medium oxd-button--secondary orangehrm-left-space"]`;
     }
 
 
@@ -31,10 +32,12 @@ exports.pimpagehrm=class pimpagehrm{
 
  async addEmployee(){
 
-    await this.page.Locator(this.addemp).click();
-    await this.page.Locator(this.firstname).fill('Test1');
-    await this.page.Locator(this.middlename).fill('Test2');
-    await this.page.Locator(this.lastname).fill('Test3');
+    await this.page.locator(this.addemp).click();
+    await this.page.locator(this.firstname).fill('Test1');
+    await this.page.locator(this.middlename).fill('Test2');
+    await this.page.locator(this.lastname).fill('Test3');
+    await this.page.locator(this.save).click();
+
  }
 
 }

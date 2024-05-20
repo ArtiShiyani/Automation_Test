@@ -1,7 +1,7 @@
 import{test,expect} from'@playwright/test'
 import { LoginHRM } from '../pages.js/LoginHRM'
 import { MyInfoHRM } from '../pages.js/MyInfoHRM'
-import{ pimpagehrm} from '../pages.js/pimpagehrm'
+import { pimpagehrm } from '../pages.js/PIMPageHRM';
 import { addAbortListener } from 'events';
 
 let page;
@@ -22,6 +22,7 @@ await loginhrm.login();
 test.afterAll(async({browser})=>{
 
     const loginhrm =new LoginHRM(page);
+
     //Logout
     await loginhrm.logout();
 })
